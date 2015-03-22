@@ -5,7 +5,11 @@ angular.module('diptervApp')
     $scope.menu = [{
       'title': 'Summary',
       'link': '/'
-    }];
+    },
+      {
+        'title': 'List',
+        'link': '/list'
+      }];
 
     $scope.isCollapsed = true;
 
