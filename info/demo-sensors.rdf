@@ -6,9 +6,8 @@
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY schema "http://mit.bme.hu/cps/sensor-schema#" >
-    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY demo-sensors "http://mit.bme.hu/cps/demo-sensors.owl#" >
+    <!ENTITY demo-sensors "http://mit.bme.hu/cps/demo-sensors#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
@@ -21,9 +20,8 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:demo-sensors="http://mit.bme.hu/cps/demo-sensors.owl#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace">
-    <owl:Ontology rdf:about="http://mit.bme.hu/cps/demo-sensors.owl">
+     xmlns:demo-sensors="http://mit.bme.hu/cps/demo-sensors#">
+    <owl:Ontology rdf:about="http://mit.bme.hu/cps/demo-sensors">
         <owl:imports rdf:resource="http://mit.bme.hu/cps/sensor-schema.owl"/>
     </owl:Ontology>
     
@@ -74,6 +72,15 @@
     
 
 
+    <!-- http://mit.bme.hu/cps/demo-sensors#observedProperty -->
+
+    <owl:ObjectProperty rdf:about="&demo-sensors;observedProperty">
+        <rdfs:range rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:domain rdf:resource="&schema;sensor"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://mit.bme.hu/cps/sensor-schema#hasLoc -->
 
     <owl:ObjectProperty rdf:about="&schema;hasLoc">
@@ -109,7 +116,7 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#observedPropertyURI -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#observedPropertyURI -->
 
     <owl:DatatypeProperty rdf:about="&demo-sensors;observedPropertyURI">
         <rdfs:domain rdf:resource="&demo-sensors;ObservedProperty"/>
@@ -118,7 +125,7 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#offering -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#offering -->
 
     <owl:DatatypeProperty rdf:about="&demo-sensors;offering">
         <rdfs:comment rdf:datatype="&xsd;string">Offering of the sensor.</rdfs:comment>
@@ -149,13 +156,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -170,13 +177,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -205,7 +212,7 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#ObservedProperty -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#ObservedProperty -->
 
     <owl:Class rdf:about="&demo-sensors;ObservedProperty"/>
     
@@ -293,6 +300,10 @@
         <rdfs:label xml:lang="en">Eco sensor (11) in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir11</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -304,6 +315,10 @@
         <rdfs:label xml:lang="en">Eco sensor (13) in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir13</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -315,6 +330,10 @@
         <rdfs:label xml:lang="en">Eco sensor (9) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir9</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -326,6 +345,10 @@
         <rdfs:label xml:lang="en">Eco sensor (10) in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir10</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -337,6 +360,10 @@
         <rdfs:label xml:lang="en">Eco sensor (5) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir5</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -348,6 +375,8 @@
         <rdfs:label xml:lang="en">Door sensor in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/con1</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Door_state_observation"/>
     </owl:NamedIndividual>
     
 
@@ -359,6 +388,10 @@
         <rdfs:label xml:lang="en">Eco sensor (6) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir6</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -370,6 +403,10 @@
         <rdfs:label xml:lang="en">Eco sensor (8) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir8</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -381,6 +418,8 @@
         <rdfs:label xml:lang="en">Window sensor in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/con2</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Door_state_observation"/>
     </owl:NamedIndividual>
     
 
@@ -392,6 +431,10 @@
         <rdfs:label xml:lang="en">Eco sensor (3) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir3</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -403,6 +446,10 @@
         <rdfs:label xml:lang="en">Eco sensor (1) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir1</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -414,6 +461,10 @@
         <rdfs:label xml:lang="en">Eco sensor (2) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir2</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -425,6 +476,10 @@
         <rdfs:label xml:lang="en">Eco sensor (7) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir7</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -436,6 +491,10 @@
         <rdfs:label xml:lang="en">Eco sensor (4) in the corridor</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir4</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE3Corridor"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -447,6 +506,10 @@
         <rdfs:label xml:lang="en">Eco sensor (12) in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/pir12</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Battery_voltage"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Luminance_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Motion_observation"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Temperature_observation"/>
     </owl:NamedIndividual>
     
 
@@ -458,6 +521,7 @@
         <rdfs:label xml:lang="en">Speech sensor in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/mob1</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Speach_observation"/>
     </owl:NamedIndividual>
     
 
@@ -469,11 +533,12 @@
         <rdfs:label xml:lang="en">Microphone sensor in IE322</rdfs:label>
         <demo-sensors:offering rdf:datatype="&xsd;string">offering/mob2</demo-sensors:offering>
         <schema:hasLoc rdf:resource="http://mit.bme.hu/cps/demo-sensors#IE322"/>
+        <demo-sensors:observedProperty rdf:resource="&demo-sensors;Stream_url_observation"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#Battery_voltage -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#Battery_voltage -->
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Battery_voltage">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
@@ -483,7 +548,17 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#Luminance_observation -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#Door_state_observation -->
+
+    <owl:NamedIndividual rdf:about="&demo-sensors;Door_state_observation">
+        <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <demo-sensors:observedPropertyURI>observableProperty/door_state</demo-sensors:observedPropertyURI>
+        <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyBoolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/demo-sensors#Luminance_observation -->
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Luminance_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
@@ -493,7 +568,7 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#Motion_observation -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#Motion_observation -->
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Motion_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
@@ -503,7 +578,27 @@
     
 
 
-    <!-- http://mit.bme.hu/cps/demo-sensors.owl#Temperature_observation -->
+    <!-- http://mit.bme.hu/cps/demo-sensors#Speach_observation -->
+
+    <owl:NamedIndividual rdf:about="&demo-sensors;Speach_observation">
+        <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <demo-sensors:observedPropertyURI>observableProperty/speach</demo-sensors:observedPropertyURI>
+        <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyText"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/demo-sensors#Stream_url_observation -->
+
+    <owl:NamedIndividual rdf:about="&demo-sensors;Stream_url_observation">
+        <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <demo-sensors:observedPropertyURI>observableProperty/stream_url</demo-sensors:observedPropertyURI>
+        <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyText"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/demo-sensors#Temperature_observation -->
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Temperature_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>

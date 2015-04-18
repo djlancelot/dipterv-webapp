@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://mit.bme.hu/cps/sensor-schema#"
+     xml:base="http://mit.bme.hu/cps/sensor-schema"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://mit.bme.hu/cps/sensor-schema.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasCoord -->
+
+    <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasCoord">
+        <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#coord"/>
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasDeployment -->
+
+    <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasDeployment">
+        <rdfs:label xml:lang="en">Deployment location</rdfs:label>
+        <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#Deployment"/>
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#TemperatureSensor"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#AirDeployment"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#SurfaceDeployment"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#SoilDeployment"/>
+                </owl:oneOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasDimension -->
+
+    <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasDimension">
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#coord"/>
+        <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#coordDimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasLoc -->
+
+    <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasLoc">
+        <rdfs:label xml:lang="en">location</rdfs:label>
+        <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasObservedPropertyType -->
+
+    <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasObservedPropertyType">
+        <rdfs:label xml:lang="en">observed property type</rdfs:label>
+        <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType"/>
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#sensor"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyBoolean"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyQuantity"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyText"/>
+                </owl:oneOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasFrequency -->
+
+    <owl:DatatypeProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasFrequency">
+        <rdfs:label xml:lang="en">Sampling frequency</rdfs:label>
+        <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#sensor"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasValue">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#BME -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#BME">
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#Budapest"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#BatteryVoltageSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#BatteryVoltageSensor">
+        <rdfs:label xml:lang="en">Battery voltage sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#OtherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#Budapest -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#Budapest">
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#Deployment -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#Deployment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#AirDeployment"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#SurfaceDeployment"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#SoilDeployment"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#DoorStateSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#DoorStateSensor">
+        <rdfs:label xml:lang="en">Door state sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#OtherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#HumiditySensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#HumiditySensor">
+        <rdfs:label xml:lang="en">Humidity sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#WeatherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#LuminanceSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#LuminanceSensor">
+        <rdfs:label xml:lang="en">Luminance sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#OtherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#Microphone -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#Microphone">
+        <rdfs:label xml:lang="en">Microphone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#SoundSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#MotionSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#MotionSensor">
+        <rdfs:label xml:lang="en">Motion sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#OtherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyBoolean"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyQuantity"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyText"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#OtherSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#OtherSensor">
+        <rdfs:label xml:lang="en">Other sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#SoundSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#SoundSensor">
+        <rdfs:label xml:lang="en">Sound sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#OtherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#SpeechSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#SpeechSensor">
+        <rdfs:label xml:lang="en">Speech sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#SoundSensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasObservedPropertyType"/>
+                <owl:hasValue rdf:resource="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyText"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#TemperatureSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#TemperatureSensor">
+        <rdfs:label xml:lang="en">Temperature sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#WeatherSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#WeatherSensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#WeatherSensor">
+        <rdfs:label xml:lang="en">Weather sensors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#coord -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#coord">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasDimension"/>
+                <owl:onClass rdf:resource="http://mit.bme.hu/cps/sensor-schema#coordDimension"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#coordDimension -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#coordDimension">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#altitude"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#easting"/>
+                    <rdf:Description rdf:about="http://mit.bme.hu/cps/sensor-schema#northing"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#loc -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#loc">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasCoord"/>
+                <owl:someValuesFrom rdf:resource="http://mit.bme.hu/cps/sensor-schema#coord"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://mit.bme.hu/cps/sensor-schema#object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#object -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#object"/>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#sensor -->
+
+    <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#sensor">
+        <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasLoc"/>
+                <owl:allValuesFrom rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#AirDeployment -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#AirDeployment">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#Deployment"/>
+        <rdfs:label xml:lang="en">Air</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#IE316 -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#IE316">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#IE412 -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#IE412">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#ObservedPropertyBoolean -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyBoolean">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType"/>
+        <rdfs:label xml:lang="en">boolean</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#ObservedPropertyQuantity -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyQuantity">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType"/>
+        <rdfs:label xml:lang="en">quantity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#ObservedPropertyText -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyText">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#ObservedPropertyType"/>
+        <rdfs:label xml:lang="en">text</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#OtherSensor1 -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#OtherSensor1">
+        <rdfs:label xml:lang="en">Other sensor</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#SoilDeployment -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#SoilDeployment">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#Deployment"/>
+        <rdfs:label xml:lang="en">Soil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#SurfaceDeployment -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#SurfaceDeployment">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#Deployment"/>
+        <rdfs:label xml:lang="en">Surface</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#TempSensor1 -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#TempSensor1">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#TemperatureSensor"/>
+        <rdfs:label xml:lang="en">Temperature sensor #1</rdfs:label>
+        <hasDeployment rdf:resource="http://mit.bme.hu/cps/sensor-schema#SurfaceDeployment"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#TempSensor2 -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#TempSensor2">
+        <rdf:type rdf:resource="http://mit.bme.hu/cps/sensor-schema#TemperatureSensor"/>
+        <rdfs:label xml:lang="en">Temperature sensor #2</rdfs:label>
+        <hasFrequency rdf:datatype="&xsd;double">2.0</hasFrequency>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#altitude -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#altitude"/>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#easting -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#easting"/>
+    
+
+
+    <!-- http://mit.bme.hu/cps/sensor-schema#northing -->
+
+    <owl:NamedIndividual rdf:about="http://mit.bme.hu/cps/sensor-schema#northing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

@@ -18,4 +18,10 @@ PREFIX mit: <http://mit.bme.hu/cps/sensor-schema#>
 SELECT ?subject ?object
 	WHERE { ?class rdfs:subClassOf+ mit:sensor  . ?subject rdf:type  ?class }
 
-# 
+# All sensors, their name with all observables and offerings
+
+PREFIX demo: <http://mit.bme.hu/cps/demo-sensors#>
+PREFIX mit: <http://mit.bme.hu/cps/sensor-schema#>
+
+SELECT ?subject ?name ?offering ?uri
+	WHERE { ?class rdfs:subClassOf+ mit:sensor  . ?subject rdf:type  ?class ; rdfs:label ?name ; demo:offering ?offering ; demo:observedProperty ?prop . ?prop demo:observedPropertyURI ?uri}
