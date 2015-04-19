@@ -84,15 +84,8 @@
     <!-- http://mit.bme.hu/cps/sensor-schema#hasLoc -->
 
     <owl:ObjectProperty rdf:about="&schema;hasLoc">
+        <rdfs:label>location</rdfs:label>
         <rdfs:domain rdf:resource="&schema;sensor"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&demo-sensors;IE3Corridor"/>
-                    <rdf:Description rdf:about="&demo-sensors;IE322"/>
-                </owl:oneOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 

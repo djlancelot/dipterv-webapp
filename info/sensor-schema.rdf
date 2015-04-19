@@ -70,7 +70,6 @@
     <!-- http://mit.bme.hu/cps/sensor-schema#hasLoc -->
 
     <owl:ObjectProperty rdf:about="http://mit.bme.hu/cps/sensor-schema#hasLoc">
-        <rdfs:label xml:lang="en">location</rdfs:label>
         <rdfs:range rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
         <rdfs:domain rdf:resource="http://mit.bme.hu/cps/sensor-schema#object"/>
     </owl:ObjectProperty>
@@ -294,16 +293,16 @@
     <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#coord">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasDimension"/>
-                <owl:onClass rdf:resource="http://mit.bme.hu/cps/sensor-schema#coordDimension"/>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasValue"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasValue"/>
+                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasDimension"/>
+                <owl:onClass rdf:resource="http://mit.bme.hu/cps/sensor-schema#coordDimension"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -350,12 +349,6 @@
 
     <owl:Class rdf:about="http://mit.bme.hu/cps/sensor-schema#sensor">
         <rdfs:subClassOf rdf:resource="http://mit.bme.hu/cps/sensor-schema#object"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://mit.bme.hu/cps/sensor-schema#hasLoc"/>
-                <owl:allValuesFrom rdf:resource="http://mit.bme.hu/cps/sensor-schema#loc"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
