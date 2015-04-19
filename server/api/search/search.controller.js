@@ -15,6 +15,9 @@ exports.index = function(req, res) {
           case "sensortype":
                 class_filter_list.push("{ ?class rdfs:subClassOf* <"+ item.value + "> } ");
                 break;
+          case "sensorname":
+                class_filter_list.push("{ ?procedure rdfs:label \""+ item.value + "\" } ");
+                break;
 
         }
       });
