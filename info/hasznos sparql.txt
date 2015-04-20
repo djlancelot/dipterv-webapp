@@ -36,5 +36,5 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX demo: <http://mit.bme.hu/cps/demo-sensors#>
 PREFIX mit: <http://mit.bme.hu/cps/sensor-schema#>
 
-SELECT ?label ?procedure ?offering ?foi  ?observable
-	WHERE { <http://mit.bme.hu/cps/demo-sensors#procedure_eco_61A474> demo:procedure ?procedure ; rdfs:label ?label; demo:offering ?offering  ; demo:observedProperty ?obs ; mit:hasLoc ?loc. ?loc demo:foi ?foi. ?obs demo:observedPropertyURI ?observable  
+SELECT ?label ?procedure ?offering ?foi  ?observable ?type_label
+	WHERE { <http://mit.bme.hu/cps/demo-sensors#procedure_eco_61A474> demo:procedure ?procedure ; rdfs:label ?label; demo:offering ?offering  ; demo:observedProperty ?obs ; mit:hasLoc ?loc. ?loc demo:foi ?foi. ?obs demo:observedPropertyURI ?observable ; mit:hasObservedPropertyType ?type . ?type rdfs:label ?type_label}

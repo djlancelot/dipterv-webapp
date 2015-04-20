@@ -45,10 +45,14 @@ exports.index = function(req, res) {
         var bindings = data.results.bindings;
 
         var result = new Array(bindings.length);
+        var transformed = 0;
         bindings.forEach(function (item, index) {
           result[index] = {"name": item.name.value, "procedure": item.procedure.value, "offering": item.offering.value};
+          transformed+=1;
+          if (transformed >= bindings.length){
+            res.json(200, result);
+          }
         });
-        res.json(200, result);
       }
     });
 };

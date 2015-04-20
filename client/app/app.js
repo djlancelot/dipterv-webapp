@@ -6,7 +6,8 @@ angular.module('diptervApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
-  'ngTagsInput'
+  'ngTagsInput',
+  'chart.js'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

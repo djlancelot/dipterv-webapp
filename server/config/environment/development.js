@@ -21,6 +21,9 @@ module.exports = {
     user: "admin",
     pass: "admin",
     prefixes: SPARQL_PREFIXES
+  },
+  sos: {
+    url: "http://152.66.253.152:8080/52n-sos-webapp-4.1.0/service"
   }
 };
 
