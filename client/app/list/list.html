@@ -7,6 +7,6 @@
     {{error}}
   </div>
   <div class="list-group">
-    <a ng-repeat="item in data" href="/show/{{item.procedure}}" class="list-group-item">{{item.name}}</a>
+    <a ng-repeat="item in data" href="/show/{{item.procedure | escape}}" class="list-group-item">{{item.name}}</a>
   </div>
 </div>
