@@ -1,12 +1,14 @@
 
-<div class="col-md-12">
+<div class="container-fluid">
+  <div class="col-md-11">
   <tags-input ng-model="searchParams" placeholder="Search name or type of sensors...">
     <auto-complete source="searchElements($query)"></auto-complete>
-  </tags-input><button class="btn btn-default" type="submit" ng-click="search()">Filter</button>
-  <div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
+  </tags-input></div>
+  <div class="col-md-1"> <button class="btn btn-default" type="submit" ng-click="search()">Filter</button></div>
+  <div class="col-md-12"><div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
     {{error}}
   </div>
   <div class="list-group">
-    <a ng-repeat="item in data" href="/show/{{item.procedure}}" class="list-group-item">{{item.name}}</a>
-  </div>
+    <a ng-repeat="item in data" href="/show/{{item.procedure | escape}}" class="list-group-item">{{item.name}}</a>
+  </div></div>
 </div>

@@ -2,13 +2,14 @@
 
 angular.module('diptervApp')
   .controller('NavbarCtrl', function ($scope, $location) {
-    $scope.menu = [{
-      'title': 'Summary',
-      'link': '/'
-    },
+    $scope.menu = [
       {
-        'title': 'List',
+        'title': 'Sensor browser',
         'link': '/list'
+      },
+      {
+        'title': 'About',
+        'link': '/'
       }];
 
     $scope.isCollapsed = true;

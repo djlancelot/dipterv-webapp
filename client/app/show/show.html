@@ -1,3 +1,23 @@
-<div class="col-md-12">
-This is the show view.
+<div class="container-fluid">
+  <div class="col-md-12"><h1 class="text-center">{{title}}</h1></div>
+  <div class="col-md-3">
+    <h3>Start period</h3>
+    <datetimepicker data-ng-model="dataFrom"></datetimepicker>
+
+  </div>
+  <div class="col-md-3">
+    <h3>End period</h3>
+    <datetimepicker data-ng-model="dataTo" data-on-set-time="fromSet(newDate, oldDate)"></datetimepicker>
+
+  </div>
+    <div ng-repeat="ob in obs" class="col-md-6">
+        <sosplot observation="ob" starttime="dataFrom" endtime="dataTo">
+
+        </sosplot>
+    </div>
+
+  <div class="col-md-6">
+    <sosmap observation="obs[0]"></sosmap>
+  </div>
+
 </div>

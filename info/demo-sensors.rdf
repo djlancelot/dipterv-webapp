@@ -84,15 +84,8 @@
     <!-- http://mit.bme.hu/cps/sensor-schema#hasLoc -->
 
     <owl:ObjectProperty rdf:about="&schema;hasLoc">
+        <rdfs:label>location</rdfs:label>
         <rdfs:domain rdf:resource="&schema;sensor"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&demo-sensors;IE3Corridor"/>
-                    <rdf:Description rdf:about="&demo-sensors;IE322"/>
-                </owl:oneOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -175,13 +168,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -196,13 +189,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&schema;hasObservedPropertyType"/>
-                <owl:hasValue rdf:resource="&schema;ObservedPropertyBoolean"/>
+                <owl:hasValue rdf:resource="&schema;ObservedPropertyQuantity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -300,6 +293,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Battery_voltage">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Battery voltage</rdfs:label>
         <observedPropertyURI rdf:datatype="&xsd;string">observableProperty/battery_voltage</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyQuantity"/>
     </owl:NamedIndividual>
@@ -310,6 +304,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Door_state_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Door state observation</rdfs:label>
         <observedPropertyURI>observableProperty/door_state</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyBoolean"/>
     </owl:NamedIndividual>
@@ -340,6 +335,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Luminance_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Luminance observation</rdfs:label>
         <observedPropertyURI rdf:datatype="&xsd;string">observableProperty/luminance</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyQuantity"/>
     </owl:NamedIndividual>
@@ -350,6 +346,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Motion_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Motion observation</rdfs:label>
         <observedPropertyURI rdf:datatype="&xsd;string">observableProperty/motion</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyBoolean"/>
     </owl:NamedIndividual>
@@ -360,6 +357,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Speach_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Speach observation</rdfs:label>
         <observedPropertyURI>observableProperty/speach</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyText"/>
     </owl:NamedIndividual>
@@ -370,6 +368,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Stream_url_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Stream URL</rdfs:label>
         <observedPropertyURI>observableProperty/stream_url</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyText"/>
     </owl:NamedIndividual>
@@ -380,6 +379,7 @@
 
     <owl:NamedIndividual rdf:about="&demo-sensors;Temperature_observation">
         <rdf:type rdf:resource="&demo-sensors;ObservedProperty"/>
+        <rdfs:label xml:lang="en">Temperature observation</rdfs:label>
         <observedPropertyURI rdf:datatype="&xsd;string">observableProperty/temperature</observedPropertyURI>
         <schema:hasObservedPropertyType rdf:resource="&schema;ObservedPropertyQuantity"/>
     </owl:NamedIndividual>
