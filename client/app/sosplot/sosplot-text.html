@@ -1,1 +1,8 @@
-<div>this is the sosplot directive</div>
+<h3>{{observation.observation}}</h3>
+<div class="alert alert-danger" ng-show="errorMsg">{{errorMsg.msg}}</div>
+<ul class="list-group">
+<li class="list-group-item list-group-item-heading"><div class="text-left sosplot-date">Date </div><div class=" text-right sosplot-text"> Text</div></li>
+<li class="list-group-item" data-ng-repeat="x in data.x">
+<span class="sosplot-date">{{x}}</span><span class="sosplot-text">{{data.y[$item]}}</span>
+</li>
+  </ul>

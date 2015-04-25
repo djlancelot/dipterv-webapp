@@ -9,10 +9,10 @@ exports.index = function(req, res) {
   var conn = mydog.getConnection();
 
   var query = mydog.prefixes +
-      "SELECT ?label ?procedure ?offering ?foi  ?observable ?obs_name ?tlabel " +
+      "SELECT ?label ?procedure ?offering ?foi ?flabel ?observable ?obs_name ?tlabel " +
       "WHERE { <" + procs[0] + "> " +
       "demo:procedure ?procedure ; rdfs:label ?label; demo:offering ?offering  ; demo:observedProperty ?obs ; mit:hasLoc ?loc."+
-      "?loc demo:foi ?foi. ?obs demo:observedPropertyURI ?observable ; rdfs:label ?obs_name ; mit:hasObservedPropertyType ?type ."+
+      "?loc demo:foi ?foi; rdfs:label ?flabel. ?obs demo:observedPropertyURI ?observable ; rdfs:label ?obs_name ; mit:hasObservedPropertyType ?type ."+
       "?type rdfs:label ?tlabel}";
 
   console.log(query);
@@ -39,7 +39,9 @@ exports.index = function(req, res) {
               "offering": item.offering.value,
               "observedProperty": item.observable.value,
               "observation": item.obs_name.value,
-              "observationType": item.tlabel.value
+              "observationType": item.tlabel.value,
+              "featureOfInterest": item.foi.value,
+              "featureOfInterestLabel": item.flabel.value
             };
             transformed+=1;
             if (transformed >= bindings.length){
