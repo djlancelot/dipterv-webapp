@@ -40,17 +40,19 @@ exports.index = function(req, res) {
     function (data) {
       console.log(data);
       if(data==null){
-       res.json(404,"No results.");
+       return res.json(404,{msg: "Error retrieving data."});
       }else {
         var bindings = data.results.bindings;
-
+        if(bindings.length == 0){
+          return res.json(200,[]);
+        }
         var result = new Array(bindings.length);
         var transformed = 0;
         bindings.forEach(function (item, index) {
           result[index] = {"name": item.name.value, "procedure": item.procedure.value, "offering": item.offering.value};
           transformed+=1;
           if (transformed >= bindings.length){
-            res.json(200, result);
+            return res.json(200, result);
           }
         });
       }
