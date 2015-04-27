@@ -39,3 +39,11 @@ PREFIX mit: <http://mit.bme.hu/cps/sensor-schema#>
 
 SELECT ?label ?procedure ?offering ?foi  ?observable ?obs_name ?type_label 
 	WHERE { <http://mit.bme.hu/cps/demo-sensors#procedure_eco_61A474> demo:procedure ?procedure ; rdfs:label ?label; demo:offering ?offering  ; demo:observedProperty ?obs ; mit:hasLoc ?loc. ?loc demo:foi ?foi. ?obs demo:observedPropertyURI ?observable ; rdfs:label ?obs_name ; mit:hasObservedPropertyType ?type . ?type rdfs:label ?type_label}
+
+
+##TaSKS
+# 1 . monitor no answer for given time and log it
+# 2. Display log in page
+# 3. Check false data
+# 4. Write email to Csanad, Strausz, Daboczi
+# 5. Connect new sensors :(
