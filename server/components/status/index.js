@@ -6,12 +6,15 @@ var _ = require('lodash');
 var config = require('../../config/environment');
 var rest = require('restler');
 var moment = require('moment');
+var sos = require('../sos');
 var states = [];
 
 exports.getStates = function(){
   return states;
 };
-
+function saveState(data){
+  //TODO recieve obs data and save state
+}
 exports.checkStates = function(){
   var conn = mydog.getConnection();
 
@@ -33,21 +36,26 @@ exports.checkStates = function(){
     function (data) {
       console.log(data);
       if(data==null){
-        return res.json(404,{msg: "Error retrieving data."});
+        return null;
       }else {
         var bindings = data.results.bindings;
         if(bindings.length == 0){
-          return res.json(200,[]);
+          return null;
         }
-        var result = new Array(bindings.length);
-        var transformed = 0;
         bindings.forEach(function (item, index) {
-          //TODO query sensor data
-          result[index] = {"name": item.name.value, "procedure": item.procedure.value, "offering": item.offering.value};
-          transformed+=1;
-          if (transformed >= bindings.length){
-            return res.json(200, result);
+          var params = {
+            "procedure": item.procedure.value,
+            "name": item.name.value,
+            "offering": item.offering.value,
+            "featureOfInterest": item.foi.value,
+            "observedPropery": item.observable.value,
+            "observedPropetyName": item.obs_name.value
           }
+          var starttime = moment().subtract(1,'hour');
+          var endtime = moment();
+
+          sos.getObservation(params,starttime,endtime,saveState);
+
         });
       }
     });
