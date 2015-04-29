@@ -26,6 +26,7 @@ exports.getObservation = function(params,starttime, endtime,  callback)
     }
   };
   rest.postJson(config.sos.url, jsonData).on('complete', function (data, response) {
+    console.log(data);
     callback(data.observations);
   });
 }

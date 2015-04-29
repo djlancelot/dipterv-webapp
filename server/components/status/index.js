@@ -7,21 +7,20 @@ var config = require('../../config/environment');
 var rest = require('restler');
 var moment = require('moment');
 var sos = require('../sos');
+var mydog = require('../mydog');
 var states = [];
-
+var lifeLimit = 60;
 exports.getStates = function(){
   return states;
 };
-function saveState(data){
-  //TODO recieve obs data and save state
-}
+
 exports.checkStates = function(){
   var conn = mydog.getConnection();
 
   var query = mydog.prefixes +
     "SELECT ?procedure ?name ?offering ?foi ?observable ?obs_name "  +
     "{ ?class rdfs:subClassOf+ mit:sensor  ."+
-    " ?procedure rdf:type  ?class ; rdfs:label ?name ; demo:offering ?offering;  demo:observedProperty ?obs ; mit:hasLoc ?loc." +
+    " ?procuri rdf:type  ?class;demo:procedure ?procedure ; rdfs:label ?name ; demo:offering ?offering;  demo:observedProperty ?obs ; mit:hasLoc ?loc." +
     " ?loc demo:foi ?foi. ?obs demo:observedPropertyURI ?observable ; rdfs:label ?obs_name ; mit:hasObservedPropertyType ?type ." +
     " ?type rdfs:label ?type_label}";
 
@@ -51,10 +50,22 @@ exports.checkStates = function(){
             "observedPropery": item.observable.value,
             "observedPropetyName": item.obs_name.value
           }
-          var starttime = moment().subtract(1,'hour');
+          var starttime = moment().subtract(lifeLimit,'minutes');
           var endtime = moment();
+          var saveState = function(params){
+            return function(data){
+              var isDown = data.observations.length == 0?true:false;
+              params["down"]= isDown;
 
-          sos.getObservation(params,starttime,endtime,saveState);
+              if(states.indexOf(params)==-1){
+                params["down"]= !params["down"];
+                states.splice(params);
+                params["down"]= !params["down"];
+                states.push(params)
+              }
+            }
+          };
+          sos.getObservation(params,starttime.toISOString(),endtime.toISOString(),saveState(params));
 
         });
       }
