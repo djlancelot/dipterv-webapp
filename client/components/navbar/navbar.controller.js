@@ -8,6 +8,11 @@ angular.module('diptervApp')
         'link': '/list'
       },
       {
+        'title': 'Status',
+        'link': '/status'
+      }
+      ,
+      {
         'title': 'About',
         'link': '/'
       }];

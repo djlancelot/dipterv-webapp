@@ -27,7 +27,6 @@ exports.index = function(req, res) {
     if(typeof data == "undefined" || data == null || data.length == 0){
       return res.json(400,{msg: "No data in given range."});
     }
-    console.log(data);
     var coord  = data[0].featureOfInterest.geometry.coordinates;
     var uom  = data[0].result.uom;
     var max = 50;

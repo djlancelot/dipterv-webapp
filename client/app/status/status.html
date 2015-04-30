@@ -1,0 +1,13 @@
+
+<div class="container-fluid">
+  <div class="col-md-12"><h1>Sensor statuses</h1>
+    <p><input type="checkbox" ng-model="downonly">Check to show sensor down only.</p>
+    <div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
+    {{error}}
+  </div>
+    <div class="list-group">
+      <div ng-class="{'list-group-item-danger': state.down,'list-group-item-success': !state.down, }" ng-hide="downonly && !state.down" ng-repeat="state in states" href="/show/{{item.procedure | escape}}" class="list-group-item">
+        <strong>{{state.name}}</strong> |
+      {{state.observedPropetyName}}</div>
+    </div></div>
+</div>

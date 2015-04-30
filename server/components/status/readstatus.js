@@ -4,5 +4,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var status  = require('../status');
 
-status.checkStates();
-console.log(status.getStates());
+status.checkStates(printStatus);
+function printStatus(){
+  console.log(status.getStates());
+}

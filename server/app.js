@@ -15,6 +15,9 @@ var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
 
+var status = require('./components/status');
+status.startTimer(status.getInterval());
+
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
