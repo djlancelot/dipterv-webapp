@@ -108,5 +108,6 @@ exports.checkStates = checkStates = function(callback){
 };
 
 exports.startTimer = function(delay, callback){
+  checkStates(callback);
   return setInterval(checkStates,delay, callback);
 };
