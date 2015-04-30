@@ -9,8 +9,19 @@ var moment = require('moment');
 var sos = require('../sos');
 var mydog = require('../mydog');
 var states = [];
+
+/**
+ * This variable sets the time after which each sensor
+ * will be considered dead.
+ */
 var lifeLimit = 60;
-var intervalMin = 1;
+/**
+ * This variable sets the interval in minutes when each
+ * status check is called.
+ */
+var intervalMin = 15;
+
+
 exports.getStates = function(){
   return states;
 };
