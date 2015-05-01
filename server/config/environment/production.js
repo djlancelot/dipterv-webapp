@@ -36,5 +36,9 @@ module.exports = {
   },
   sos: {
     url: "http://152.66.253.152:8080/52n-sos-webapp-4.1.0/service"
+  },
+  status: {
+    lifetime: 60,
+    checkinterval: 15
   }
 };
