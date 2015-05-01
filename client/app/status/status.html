@@ -5,9 +5,20 @@
     <div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
     {{error}}
   </div>
-    <div class="list-group">
-      <div ng-class="{'list-group-item-danger': state.down,'list-group-item-success': !state.down, }" ng-hide="downonly && !state.down" ng-repeat="state in states" href="/show/{{item.procedure | escape}}" class="list-group-item">
-        <strong>{{state.name}}</strong> |
-      {{state.observedPropetyName}}</div>
-    </div></div>
+    <table class="table table-hover">
+      <thead>
+      <tr><td ng-class="{'active': ordering==title.value}" data-ng-repeat="title in header"><a href="#" ng-click="setOrdering(title.value)">
+        {{title.text}}</a>
+      </td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-class="{'danger': state.down,'success': !state.down, }"
+          ng-hide="downonly && !state.down"
+          ng-repeat="state in states | orderBy: ordering"
+          >
+        <td><strong>{{state.name}}</strong> </td><td>
+      {{state.observedPropetyName}}</td></tr>
+      </tbody>
+    </table></div>
 </div>
