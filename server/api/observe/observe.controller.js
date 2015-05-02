@@ -15,7 +15,7 @@ exports.index = function(req, res) {
         break;
       case "boolean":
         parser = function (result) {
-          if (result == true) {
+          if (result === true) {
             return 1;
           } else {
             return 0;
@@ -24,22 +24,22 @@ exports.index = function(req, res) {
         break;
     }
     return function(data){
-    if(typeof data == "undefined" || data == null || data.length == 0){
+    if(typeof data === "undefined" || data === null || data.length === 0){
       return res.json(400,{msg: "No data in given range."});
     }
     var coord  = data[0].featureOfInterest.geometry.coordinates;
     var uom  = data[0].result.uom;
     var max = 50;
     var cnt = 0;
-    var x = new Array();
-    var y = new Array();
+    var x = [];
+    var y = [];
     function dateCompare(a,b){
         if (a.resultTime < b.resultTime)
             return 1;
         if (a.resultTime > b.resultTime)
             return -1;
         return 0;
-    };
+    }
     data.sort(dateCompare);
     data.forEach(function(item, index, arr){
         if( index <  max){

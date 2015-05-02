@@ -16,7 +16,7 @@ exports.index = function(req, res) {
   };
   var observation = req.body.observation;
   console.log(observation);
-  if(typeof observation != 'undefined' &&
+  if(typeof observation !== 'undefined' &&
     observation.hasOwnProperty("procedure") &&
     observation.hasOwnProperty("observedProperty") &&
     observation.hasOwnProperty("featureOfInterest")) {

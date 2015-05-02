@@ -10,8 +10,7 @@ angular.module('diptervApp')
       {
         'title': 'Status',
         'link': '/status'
-      }
-      ,
+      },
       {
         'title': 'About',
         'link': '/'

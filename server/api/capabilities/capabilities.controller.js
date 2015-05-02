@@ -24,7 +24,7 @@ exports.index = function(req, res) {
       },
       function (data) {
         console.log(data);
-        if(data==null){
+        if(data===null){
           res.json(404,"No results.");
         }else {
           var bindings = data.results.bindings;

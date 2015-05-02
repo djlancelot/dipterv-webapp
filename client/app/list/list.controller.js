@@ -7,15 +7,15 @@ angular.module('diptervApp')
         return $http.get('/api/autocomplete?q=' + query);
       };
       $scope.search = function(){
-      $http.post('/api/search', {data_or: $scope.searchParams}).
-        success(function(data, status, headers, config) {
+      $http.post('/api/search', {anydata: $scope.searchParams}).
+        success(function(data) {
           $scope.data = data;
         }).
-        error(function(data, status, headers, config) {
-          $scope.error = "Error retrieving sensor list.";
+        error(function() {
+          $scope.error = 'Error retrieving sensor list.';
         });
-    }
-    $scope.search("pamparam");
+    };
+    $scope.search('pamparam');
   }]).filter('escape', function() {
     return window.encodeURIComponent;
   });

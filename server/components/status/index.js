@@ -29,7 +29,7 @@ exports.getInterval = function(){
   return intervalMin*60000;
 };
 
-exports.checkStates = checkStates = function(callback){
+var checkStates = function(callback){
   console.log("Checking state");
   var conn = mydog.getConnection();
 
@@ -46,11 +46,11 @@ exports.checkStates = checkStates = function(callback){
       offset: 0
     },
     function (data) {
-      if(data==null){
+      if(data===null){
         return null;
       }else {
         var bindings = data.results.bindings;
-        if(bindings.length == 0){
+        if(bindings.length === 0){
           return null;
         }
         var counter =0;
@@ -70,23 +70,23 @@ exports.checkStates = checkStates = function(callback){
           var endtime = moment();
           var saveState = function(params){
             return function(data){
-              var isDown = data == undefined?true:data.length == 0?true:false;
-              params["down"]= isDown;
+              var isDown = data === undefined?true:data.length === 0?true:false;
+              params.down = isDown;
               console.log(params.name + "/"+ params.observedPropetyName+": " + isDown);
-              if(states.indexOf(params)==-1){
+              if(states.indexOf(params)===-1){
                 //This state is not registered
-                params["down"]= !isDown;
+                params.down= !isDown;
                 var revStateIdx = states.indexOf(params);
                 if(revStateIdx > -1){
                   //Reverse state is registered
                   //1. restore state
-                  params["down"]= isDown;
+                  params.down= isDown;
                   //2. remove the other and replace with current
                   states.splice(revStateIdx,1,params);
                 }else{
                   // Nothing registered yet
                   //1. restore state
-                  params["down"]= isDown;
+                  params.down= isDown;
                   //2. add to array
                   states.push(params)
 
@@ -96,7 +96,7 @@ exports.checkStates = checkStates = function(callback){
               }
               if (++counter >= bindings.length){
 
-                return typeof callback == "function"?callback(states):states;
+                return typeof callback === "function"?callback(states):states;
               }
             }
           };
@@ -106,8 +106,9 @@ exports.checkStates = checkStates = function(callback){
       }
     });
 };
+exports.checkStates = checkStates;
 
-exports.startTimer = function(delay, callback){
+  exports.startTimer = function(delay, callback){
   checkStates(callback);
   return setInterval(checkStates,delay, callback);
 };

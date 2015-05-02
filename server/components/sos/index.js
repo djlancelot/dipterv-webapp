@@ -42,7 +42,7 @@ exports.getFeatureOfInterest = function(params, callback)
   };
   rest.postJson(config.sos.url, jsonData).on('complete', function (data, response) {
     console.log(data);
-    if(data == null || data.featureOfInterest.length == 0){
+    if(data === null || data.featureOfInterest.length === 0){
       return callback({lat: 0, lng: 0});
     }
     var coords = data.featureOfInterest[0].geometry.coordinates;

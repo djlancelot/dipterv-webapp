@@ -5,7 +5,7 @@ angular.module('diptervApp')
     $scope.setOrdering = function (order) {
       $scope.ordering = order;
     };
-    $http.get("/api/states").success(function(data){
+    $http.get('/api/states').success(function(data){
       $scope.states = data.states;
       $scope.header = data.header;
       $scope.ordering =  data.header[0].value;

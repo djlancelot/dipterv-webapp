@@ -6,7 +6,7 @@ var mydog = require('../../components/mydog');
 
 // Search
 exports.index = function(req, res) {
-  var params = req.body.data_or || [];
+  var params = req.body.anydata || [];
   var class_filter_list = [];
   var class_condition = "";
   if(params.length > 0){
@@ -39,11 +39,11 @@ exports.index = function(req, res) {
     },
     function (data) {
       console.log(data);
-      if(data==null){
+      if(data===null){
        return res.json(404,{msg: "Error retrieving data."});
       }else {
         var bindings = data.results.bindings;
-        if(bindings.length == 0){
+        if(bindings.length === 0){
           return res.json(200,[]);
         }
         var result = new Array(bindings.length);
