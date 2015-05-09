@@ -11,7 +11,14 @@ angular.module('diptervApp')
           console.log(points, evt);
         };
         scope.errorMsg = null;
-        scope.contentUrl = 'app/sosplot/sosplot-'+ scope.observation.observationType + '.html';
+        var type;
+        if (typeof scope.observation === 'undefined' || typeof scope.observation.observationType === 'undefined' ){
+          type = 'quantity';
+        }else{
+          type = scope.observation.observationType;
+        }
+
+        scope.contentUrl = 'app/sosplot/sosplot-'+ type + '.html';
         scope.labels = [0,1];
         scope.series = ['No data'];
         scope.data = [[0,1]];
@@ -21,9 +28,21 @@ angular.module('diptervApp')
           scope.data = [data.y];
         }
         var reload = function(){
-          console.log('Start changed: ' + scope.starttime.toJSON());
-          console.log('End changed: ' + scope.endtime.toJSON());
-          $http.post('/api/observe', {observation: scope.observation, zoom: 0, start:0, starttime: scope.starttime, endtime: scope.endtime})
+          var starttime;
+          var endtime;
+          if(typeof scope.starttime === 'undefined'){
+            starttime = new Date();
+          }else{
+            starttime = scope.starttime;
+          }
+          if(typeof scope.endtime === 'undefined'){
+            endtime = new Date();
+          }else{
+            endtime = scope.endtime;
+          }
+          console.log('Start changed: ' + starttime.toJSON());
+          console.log('End changed: ' + endtime.toJSON());
+          $http.post('/api/observe', {observation: scope.observation, zoom: 0, start:0, starttime: starttime, endtime: endtime})
             .success(function(data){
               initplot(data);
               scope.errorMsg = null;
