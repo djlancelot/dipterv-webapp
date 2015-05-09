@@ -39,7 +39,7 @@ exports.index = function(req, res) {
     },
     function (data) {
       console.log(data);
-      if(data===null){
+      if(data===null || typeof data.results === 'undefined' || typeof data.results.bindings === 'undefined'){
        return res.json(404,{msg: "Error retrieving data."});
       }else {
         var bindings = data.results.bindings;

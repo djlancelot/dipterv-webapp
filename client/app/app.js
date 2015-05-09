@@ -8,7 +8,8 @@ angular.module('diptervApp', [
   'ui.bootstrap',
   'ngTagsInput',
   'chart.js',
-  'ui.bootstrap.datetimepicker'
+  'ui.bootstrap.datetimepicker',
+  'angularSpinner'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

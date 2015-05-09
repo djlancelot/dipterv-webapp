@@ -46,7 +46,7 @@ var checkStates = function(callback){
       offset: 0
     },
     function (data) {
-      if(data===null){
+      if(data===null || typeof data.results === 'undefined' || typeof data.results.bindings === 'undefined'){
         return null;
       }else {
         var bindings = data.results.bindings;

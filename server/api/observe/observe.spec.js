@@ -8,12 +8,13 @@ describe('GET /api/observe', function() {
 
   it('should respond with JSON array', function(done) {
     request(app)
-      .get('/api/observe')
-      .expect(200)
+      .post('/api/observe')
+      .set({})
+      .expect(404)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.body.should.be.instanceof(Array);
+        res.body.should.eql({});
         done();
       });
   });

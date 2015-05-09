@@ -16,7 +16,7 @@ exports.index = function(req, res) {
         limit: 50,
         offset: 0
       },function(data){
-        if(data === null){
+        if(data === null ||  typeof data.results === 'undefined' ||typeof data.results.bindings === 'undefined'){
           res.json(404,"No results.");
         }else {
           var bindings = data.results.bindings;

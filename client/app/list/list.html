@@ -8,7 +8,7 @@
   <div class="col-md-12"><div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
     {{error}}
   </div>
-  <div class="list-group">
+  <div class="list-group" us-spinner spinner-key="mainspinner">
     <a ng-repeat="item in data" href="/show/{{item.procedure | escape}}" class="list-group-item">{{item.name}}</a>
   </div></div>
 </div>

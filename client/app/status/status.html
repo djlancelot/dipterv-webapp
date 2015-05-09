@@ -5,7 +5,7 @@
     <div class="alert alert-warning alert-dismissible" ng-show="error" role="alert">
     {{error}}
   </div>
-    <table class="table table-hover">
+    <table class="table table-hover" us-spinner spinner-key="mainspinner">
       <thead>
       <tr><td ng-class="{'active': ordering==title.value}" data-ng-repeat="title in header"><a href="#" ng-click="setOrdering(title.value)">
         {{title.text}}</a>

@@ -65,7 +65,7 @@ exports.index = function(req, res) {
     "observationType": "quantity"
   };
   var body = req.body;
-  var observation = body.observation;
+  var observation = body.observation || {};
   console.log(observation);
   if(observation.hasOwnProperty("procedure") &&
     observation.hasOwnProperty("offering") &&

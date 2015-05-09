@@ -9,11 +9,10 @@ describe('GET /api/location', function() {
   it('should respond with JSON array', function(done) {
     request(app)
       .get('/api/location')
-      .expect(200)
+      .expect(404)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.body.should.be.instanceof(Array);
         done();
       });
   });
